@@ -8,6 +8,7 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.test.formatters.BookFormatter;
@@ -58,4 +59,9 @@ public class WebConfiguration  extends WebMvcConfigurerAdapter {
         registry.addFormatter(new BookFormatter(bookRepository));
 
     }
+    @Override
+    public void configurePathMatch(PathMatchConfigurer configurer){
+        configurer.setUseSuffixPatternMatch(false).setUseTrailingSlashMatch(true);
+    }
+
 }
