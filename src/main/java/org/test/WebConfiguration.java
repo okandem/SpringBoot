@@ -2,6 +2,8 @@ package org.test;
 
 import org.apache.catalina.filters.RemoteIpFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.format.FormatterRegistry;
@@ -16,6 +18,7 @@ import org.test.formatters.BookFormatter;
 import org.test.repository.BookRepository;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by okan on 19.03.2017.
@@ -70,6 +73,16 @@ public class WebConfiguration  extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/internal/**")
             .addResourceLocations("classpath:/");
 
+    }
+
+    @Bean
+    public EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer(){
+        return new EmbeddedServletContainerCustomizer() {
+            @Override
+            public void customize(ConfigurableEmbeddedServletContainer container) {
+                container.setSessionTimeout(1, TimeUnit.MINUTES);
+            }
+        };
     }
 
 }
