@@ -20,19 +20,22 @@ sourceCompatibility = 1.8
 repositories {
 	mavenCentral()
 }
-configurations {
-	compile.exclude module: "spring-boot-starter-tomcat"
-}
+//configurations {
+//	compile.exclude module: "spring-boot-starter-tomcat"
+//}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compile("org.springframework.boot:spring-boot-starter-web")
 	compile("org.springframework.boot:spring-boot-starter-data-rest")
+	testRuntime("com.jayway.jsonpath:json-path")
 
 
 
-	compile("org.springframework.boot:spring-boot-starter-jetty")
+//	compile("org.springframework.boot:spring-boot-starter-jetty")
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+
+
 }
