@@ -39,12 +39,12 @@ public class StartupRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
 //        logger.info("DataSource:"+ ds.toString());
 
-        Author author	=	new	Author("Alex",	"Antonov");
-        author	=	authorRepository.save(author);
-        Publisher publisher	=	new	Publisher("Packt");
-        publisher	=	publisherRepository.save(publisher);
-        Book book	=	new	Book("978-1-78528-415-1",	"Spring	Boot	Recipes",	author,	publisher);
-        bookRepository.save(book);
+//        Author author	=	new	Author("Alex",	"Antonov");
+//        author	=	authorRepository.save(author);
+//        Publisher publisher	=	new	Publisher("Packt");
+//        publisher	=	publisherRepository.save(publisher);
+//        Book book	=	new	Book("978-1-78528-415-1",	"Spring	Boot	Recipes",	author,	publisher);
+//        bookRepository.save(book);
         logger.info("Kitab sayısı :"+ bookRepository.count());
         logger.info("Kitap:"+ bookRepository.findBookByIsbn("978-1-78528-415-1").getTitle());
 
