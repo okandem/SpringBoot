@@ -58,6 +58,7 @@ public void setupMockMvc(){
 @Before
 public void setLoadDataFixtures(){
 	if(loadDataFixtures){
+		//bütün testlerden önce çalışmaması için. 1 kere çalışması için.
 		ResourceDatabasePopulator populator = new ResourceDatabasePopulator(context.getResource("classpath:/test-data.sql"));
 		DatabasePopulatorUtils.execute(populator,ds);
 		loadDataFixtures=false;
